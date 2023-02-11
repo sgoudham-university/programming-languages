@@ -14,24 +14,24 @@ prog
 // Commands
 
 com
-	:	PUT expr EOL         # put
-	|	SET var ASSN expr EOL # set
+	:	PUT expr COMMENT? EOL?           # put
+	|	SET var ASSN expr COMMENT? EOL?  # set
 	;
 
 // Expressions
 
 expr
-	:	prim (operator+=(PLUS | MINUS | TIMES) prim)* # op
+	:	prim (operator+=(PLUS | MINUS | TIMES | DIV) prim)* # op
 	;
 
 prim		        
-	:	NUM                  # num
-	|	ID                   # id
-	|	LPAR expr RPAR       # parens
+	:	NUM                     # num
+	|	ID+                     # id
+	|	LPAR expr RPAR          # parens
 	;
 	
 var
-	:	ID
+	:	ID+
 	;
 
 // Lexicon
@@ -43,6 +43,7 @@ ASSN	:	'=' ;
 PLUS	:	'+' ;
 MINUS	:	'-' ;
 TIMES	:	'*' ;
+DIV   : '/' ;
 LPAR	:	'(' ;
 RPAR	:	')' ;
 

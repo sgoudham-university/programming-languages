@@ -1,6 +1,14 @@
 set c = 1+1
 set e = 2+2
-put c*2
-put e*8
-set m = c+e
-put m+0
+put c*2                   // print 4
+put e*8                   // print 32
+set m = c+e 
+put m+0                   // print 6
+
+set amy = 100
+set pigeon = 69
+set winston = 0
+put amy                   // print 100
+put pigeon                // print 69
+put winston               // print 0
+put amy+pigeon+winston    // print 169
