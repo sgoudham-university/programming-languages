@@ -1,0 +1,10 @@
+set c = 8
+set e = 7
+// amy
+put c*2
+put e*8
+// winston
+set m = (c*2) + (e*8)
+put m
+//
+//

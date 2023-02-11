@@ -1,0 +1,6 @@
+set a = 3
+set b = 4
+set c = 5
+set s = (a+b+c)/2
+put s
+put s*(s-a)*(s-b)*(s-c)
