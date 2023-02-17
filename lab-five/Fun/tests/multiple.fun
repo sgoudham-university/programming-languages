@@ -5,5 +5,5 @@ func int test (int a, int b):
 	return a+b .
 
 proc main ():
-        write(test(2,3))
+    write(test(2,3))
 .
