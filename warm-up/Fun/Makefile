@@ -1,30 +1,34 @@
-.PHONY: visitor
+.PHONY: visitor parse check run testParse testCheck testRun recompile test
+
 visitor: 
 	java -jar antlr.jar -no-listener -visitor src/ast/Fun.g4
 
-.PHONY: parse
 parse: visitor
 	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunParse.java
 
-.PHONY: check
 check: visitor
 	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunCheck.java
 
-.PHONY: testParse
+run: visitor
+	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunRun.java
+
 testParse:
 	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunParse.java
 
-.PHONY: testCheck
 testCheck:
 	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunCheck.java
+
+testRun:
+	javac -cp "antlr.jar" -d bin/ -sourcepath src/ src/fun/FunRun.java
+
+recompile: visitor testParse testCheck testRun
 
 SEP=":"
 ifeq ($(OS),Windows_NT)
 	SEP=";"
 endif
 
-.PHONY: test
-test: visitor testParse testCheck
-	java -cp "antlr.jar$(SEP)bin" fun/FunCheck tests/$(file).fun
+test:
+	java -cp "antlr.jar$(SEP)bin" fun/FunRun tests/$(file).fun
 
 all: run

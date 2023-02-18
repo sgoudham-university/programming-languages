@@ -270,7 +270,6 @@ public class FunCheckerVisitor extends AbstractParseTreeVisitor<Type> implements
         for (FunParser.Formal_declContext fd : formalParams) {
             Type t = visit(fd);
             types.add(t);
-            // define(fd.ID().getText(), t, fd);
         }
 
         return new Type.Sequence(types);

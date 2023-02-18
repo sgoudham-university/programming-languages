@@ -4,6 +4,11 @@
 func int test (int a, int b): 
 	return a+b .
 
+func int pigeon (int winston, int amy):
+  int hammy = winston - amy
+  return test(hammy,hammy)
+  .
+
 proc main ():
-    write(test(2,3))
+    write(pigeon(20,10))
 .
