@@ -100,7 +100,7 @@ public class FunCheckerVisitor extends AbstractParseTreeVisitor<Type> implements
             ARITHTYPE = new Type.Mapping(
                     new Type.Pair(Type.INT, Type.INT), Type.INT),
             // Question: What does the Type.Mapping actually mean for an empty parameter?
-            MAINTYPE = new Type.Mapping(Type.EMPTY, Type.EMPTY);
+            MAINTYPE = new Type.Mapping(Type.EMPTY, Type.VOID);
 
     private void checkType(Type typeExpected,
             Type typeActual,
@@ -194,7 +194,7 @@ public class FunCheckerVisitor extends AbstractParseTreeVisitor<Type> implements
             t = visit(fd);
         else
             t = Type.EMPTY;
-        Type proctype = new Type.Mapping(t, Type.EMPTY);
+        Type proctype = new Type.Mapping(t, Type.VOID);
         define(ctx.ID().getText(), proctype, ctx);
         List<FunParser.Var_declContext> var_decl = ctx.var_decl();
         for (FunParser.Var_declContext vd : var_decl)
